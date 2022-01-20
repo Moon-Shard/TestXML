@@ -1,0 +1,215 @@
+        -:    0:Source:/mnt/c/Users/Ivan/CLionProjects/test/test.cpp
+        -:    0:Graph:/mnt/c/Users/Ivan/CLionProjects/test/cmake-build-debug-coverage/CMakeFiles/test.dir/test.cpp.gcno
+        -:    0:Data:/mnt/c/Users/Ivan/CLionProjects/test/cmake-build-debug-coverage/CMakeFiles/test.dir/test.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <fstream>
+        -:    2:#include <string>
+        -:    3:#include <iostream>
+        -:    4:
+        -:    5:using namespace std;
+        -:    6:
+function main called 1 returned 100% blocks executed 79%
+        1:    7:int main()
+        -:    8:{
+        2:    9:    string str;
+        1:    9-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:    9-block  1
+call    2 never executed
+        2:   10:    string buffer;
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   10-block  0
+call    2 never executed
+        2:   11:    ofstream file_out;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+call    3 returned 1
+    $$$$$:   11-block  0
+call    4 never executed
+        1:   12:    ifstream file;
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   12-block  1
+call    3 never executed
+        1:   13:    file.open("/mnt/c/Users/Ivan/CLionProjects/test/test.xml");
+        1:   13-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   14:    file_out.open("/mnt/c/Users/Ivan/CLionProjects/test/test.log");
+        1:   14-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   15:    if (!file.is_open())
+        1:   15-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   15-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+        -:   16:    {
+    #####:   17:        cout << "Ошбика открытия файла XML" << endl;
+    %%%%%:   17-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   17-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:   18:    }
+        -:   19:    else
+        -:   20:    {
+        1:   21:        cout << "Файл XML открыт..." << endl;
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   22:        if (!file_out.is_open()){
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   22-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    #####:   23:            cout << "Ошбика открытия файла LOG" << endl;
+    %%%%%:   23-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    %%%%%:   23-block  1
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:   24:        }
+        -:   25:        else
+        -:   26:        {
+        1:   27:            cout << "Файл LOG открыт..." << endl;
+        1:   27-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   27-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+       13:   28:            while (!file.eof()){
+       13:   28-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:   28-block  1
+branch  3 taken 12 (fallthrough)
+branch  4 taken 1
+       12:   28-block  2
+       12:   29:                str = "";
+       12:   29-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+       12:   30:                getline(file, str);
+       12:   30-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+       12:   31:                int null_line_tester = str.find_first_not_of("< ")-1;
+       12:   31-block  0
+call    0 returned 12
+       22:   32:                while (null_line_tester < 0){
+       22:   32-block  0
+branch  0 taken 10 (fallthrough)
+branch  1 taken 12
+       10:   33:                    str = "";
+       10:   33-block  0
+call    0 returned 10
+branch  1 taken 10 (fallthrough)
+branch  2 taken 0 (throw)
+       10:   34:                    getline(file, str);
+       10:   34-block  0
+call    0 returned 10
+branch  1 taken 10 (fallthrough)
+branch  2 taken 0 (throw)
+       10:   35:                    null_line_tester = str.find_first_not_of("< ")-1;
+       10:   35-block  0
+call    0 returned 10
+        -:   36:                }
+       12:   37:                int arga = str.find_first_not_of("< ")-1;
+       12:   37-block  0
+call    0 returned 12
+       12:   38:                int argb = str.find_first_not_of("< ");
+call    0 returned 12
+       12:   39:                cout << arga << endl;
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+       12:   39-block  0
+call    3 returned 12
+branch  4 taken 12 (fallthrough)
+branch  5 taken 0 (throw)
+       12:   40:                cout << argb << endl;
+       12:   40-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+       12:   40-block  1
+call    3 returned 12
+branch  4 taken 12 (fallthrough)
+branch  5 taken 0 (throw)
+       12:   41:                str.erase( 0, argb);
+       12:   41-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   42:
+       12:   43:                cout << str << endl;
+       12:   43-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+       12:   43-block  1
+call    3 returned 12
+branch  4 taken 12 (fallthrough)
+branch  5 taken 0 (throw)
+       12:   44:                file_out << str;
+       12:   44-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   45:
+        -:   46:            }
+        -:   47:
+        -:   48:        }
+        -:   49:
+        -:   50:
+        -:   51:
+        -:   52:
+        -:   53:
+        -:   54:
+        -:   55:    }
+        -:   56:
+        1:   57:    file.close();
+        1:   57-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   58:    file_out.close();
+        1:   58-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   59:    return 0;
+        1:   59-block  0
+call    0 returned 1
+        -:   60:}
