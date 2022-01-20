@@ -9,6 +9,7 @@ int main()
     string str;
     string buffer;
     string temp;
+
     int string_lenght;
     bool space_counter = 0;
     ofstream file_out;
@@ -28,6 +29,11 @@ int main()
         else
         {
             cout << "Файл LOG открыт..." << endl;
+            int i = 0;
+            while (i<5){
+                getline(file, str);
+                i++;
+            }
             while (!file.eof()){
                 str = "";
                 getline(file, str);
@@ -38,51 +44,75 @@ int main()
                     null_line_tester = str.find_first_not_of("< ")-1;
                 }
                     while (str.length()>1){                                          //Условия конца строки
-                    if (str.find_first_of("/") == str.find_first_not_of("<") || space_counter == 1){
-                        buffer.erase(buffer.find_last_of("/"), buffer.length()-1);
-                        temp = "";
-                        space_counter = 0;
-                        //file_out << buffer;
+                        if (str.find_first_of("/") == str.find_first_of("<")+1 ){
+                            if (buffer.find_first_of("/") != -1) {
+                                buffer.erase(buffer.find_last_of("/"), buffer.length() - 1);
+                                temp = "";
+                                str.erase(0, str.find_first_of(">"));
+                                space_counter = 0;
+                            } else{
+                                str = "";
+                                temp = "";
+                                buffer = "";
+
+                            }
+
                     }
-                    else{
-                        if (str.length()==2){
+                        else{
+                            if (str.length()==2){
                             str = "";
-                        } else {
+                            }
+                            else {
                             str.erase(0, str.find_first_not_of("< "));
-                        }
-                        if (buffer.length() == 0){
+                            }
+                            if (buffer.length() == 0){
                             buffer = str;
                             buffer.erase(buffer.find_first_of("> "),buffer.length()-1);
                             str.erase(0, str.find_first_of("> ")+1);
-                            file_out << buffer;
+                            file_out << buffer << "\n";
                             cout << buffer << endl;
-                        }
-                        else{
+                            }
+                            else{
 
 
-                            if(str.find_first_of(" ") < str.find_first_of("\">")){            //ВОЗМОЖНА ОШИБКА!!!
+                                if(str.find_first_of(" ") < str.find_first_of("\">")){            //ВОЗМОЖНА ОШИБКА!!!
 
                                 temp = str;
                                 temp.erase(temp.find_first_of(" "),temp.length()-1);
                                 str.erase(0, str.find_first_of(" "));
                                 buffer = buffer + "/" + temp;
-                                file_out << buffer;
+                                file_out << buffer << "\n";
                                 cout << buffer << endl;
                                     space_counter = 1;
 
-                            }
-                            else if (str.length()!=0){
-                                temp = str;
-                                temp.erase(temp.find_first_of("\">")+1, temp.length() -1);
-                                str.erase(0, str.find_first_of("\">")+1);
-                                buffer = buffer + "/" + temp;
-                                temp = str;
-                                temp.erase(temp.find_first_of("\">")+1, temp.length() -1);
-                                str.erase(0, str.find_first_of("\">")+1);
-                                buffer = buffer + temp;
-                                file_out << buffer;
-                                cout << buffer << endl;
-                                buffer.erase(buffer.find_last_of("/"), buffer.length()-1);
+                                }
+                                else if (str.length()!=0){
+                                    if (str.find_first_of("\"")< str.find_first_of(">")) {
+                                    temp = str;
+                                    temp.erase(temp.find_first_of("\"") + 1, temp.length() - 1);
+                                    str.erase(0, str.find_first_of("\"") + 1);
+                                    buffer = buffer + "/" + temp;
+                                    temp = str;
+                                    temp.erase(temp.find_first_of("\"") + 1, temp.length() - 1);
+                                    str.erase(0, str.find_first_of("\"") + 1);
+                                    buffer = buffer + temp;
+                                    file_out << buffer << "\n";
+                                    cout << buffer << endl;
+                                    buffer.erase(buffer.find_last_of("/"), buffer.length() - 1);
+                                    }
+                                    else {
+                                    temp = str;
+                                    temp.erase(temp.find_first_of(">"), temp.length() - 1);
+                                    str.erase(0, str.find_first_of(">")+1);
+                                    buffer = buffer + "/" + temp;
+                                    temp = str;
+                                    temp.erase(temp.find_first_of("<") , temp.length() - 1);
+                                    str.erase(0, str.find_first_of("<"));
+                                    buffer = buffer + "=\"" + temp + "\"";
+                                    file_out << buffer << "\n";
+                                    cout << buffer << endl;
+                                    //buffer.erase(buffer.find_last_of("/"), buffer.length() - 1);
+                                    }
                             }
                             }
 
