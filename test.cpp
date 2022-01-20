@@ -14,7 +14,7 @@ int main()
     bool space_counter = 0;
     ofstream file_out;
     ifstream file;
-    file.open("/mnt/c/Users/Ivan/CLionProjects/test/test.xml");
+    file.open("/mnt/c/Users/Ivan/CLionProjects/test/test1.xml");
     file_out.open("/mnt/c/Users/Ivan/CLionProjects/test/test.log");
     if (!file.is_open())
     {
